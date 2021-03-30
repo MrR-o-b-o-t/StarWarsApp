@@ -1,34 +1,41 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+// import axios from 'axios';
 
-class Table extends Component {
+export default class Table extends Component {
+
   render() {
+    const { swapiData } = this.props;
+    console.log(this.props);
+    const swapiDataReturn = swapiData.map(swapi => {
+    const { name, dob, planet } = swapi;
     return (
-      <div>
-        <table className="table table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">DOB</th>
-              <th scope="col">Height</th>
-              <th scope="col">Mass</th>
-              <th scope="col">Homeworld</th>
-              <th scope="col">Species</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Luke Skywalker</th>
-              <td>4/3/1987</td>
-              <td>6'1</td>
-              <th scope="row">185</th>
-              <td>Tatooin</td>
-              <td>Human</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <tr key={swapi}>
+      <td>{name}</td>
+      <td>{dob}</td>
+      <td>{planet}</td>
+    </tr>
+  );
+});
+return (
+  <table className="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">DOB</th>
+        <th scope="col">Planet</th>
+      </tr>
+    </thead>
+    <tbody>
+      {swapiDataReturn.length > 0 ? (
+        swapiDataReturn
+      ) : (
+        <tr>
+          <td>No data found.</td>
+        </tr>
+      )}
+    </tbody>
+  </table>
     );
   }
 }
 
-export default Table
