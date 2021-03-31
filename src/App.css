@@ -4,6 +4,9 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+table th, tr{
+    color: white;
+}
 body{
     background-color: #363945;
     font-family: Roboto;
