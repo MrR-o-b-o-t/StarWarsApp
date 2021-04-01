@@ -6,21 +6,37 @@ export default class Table extends React.Component {
     myData: []
   }
 
+  // addData = data => {
+  //   this.setState({
+  //     myData: [...this.state.myData, data]
+  //   });
+  // };
+
   componentDidMount() {
     axios.get('https://swapi.dev/api/people')
     .then(response => {
       const myData = response.data.results;
       this.setState({ myData });
+      console.log(this.props)
     })
-  }
-
-  displayInitData = data => {
-
   }
 
   render() {
     const returnData = this.state.myData.map(returnItems => {
-      const {name, birth_year, homeworld, height, mass, species} = returnItems;
+      let {name, birth_year, homeworld, height, mass, species} = returnItems;
+      if(homeworld === "http://swapi.dev/api/planets/1/") {
+        homeworld = "Tatooin";
+      } else if(homeworld === "http://swapi.dev/api/planets/2/") {
+        homeworld = "Alderaan";
+      }else if(homeworld === "http://swapi.dev/api/planets/8/") {
+        homeworld = "Naboo";
+    } else if (homeworld === "http://swapi.dev/api/planets/20/") {
+      homeworld = "Stewjon";
+    }
+    
+    if (species = "https://swapi.dev/api/species/2/") {
+      species = "Droid";
+    }
       return(
         <tr>
           <td>{name}</td>
@@ -32,7 +48,6 @@ export default class Table extends React.Component {
         </tr>
       )
     })
-    console.log(this.state.myData)
 return (
   <table className="table">
     <thead>
