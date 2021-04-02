@@ -1,6 +1,15 @@
 import React from "react";
 import axios from "axios";
 
+//Psuedo
+// Enter search params (handleInput())
+// use search params to set correct api get address to SWAPI
+// pass correct api address to handleSubmit()
+// use api address to get data related to search params
+// pass collected data to Table.js
+// set Table.js state to reflect collected data from Search.js
+// render table with new state in Table.js
+
 export default class Search extends React.Component {
     state = {
         searchData: []
@@ -9,39 +18,17 @@ export default class Search extends React.Component {
   handleInput = (e) => {
     const target = e.target;
     const value = target.value;
-    console.log(target);
-    const api = `https://swapi.dev/api/people/?search=${value}`;
-    console.log(api);
+    let api = `https://swapi.dev/api/people/?search=${value}`;
   };
 
   handleSubmit = (e) => {
-    console.log(this.props)
+    e.preventDefault();
     axios.get("https://swapi.dev/api/people/?search=r2")
     .then((response) => {
       const searchData = response.data;
       this.setState({ searchData });
     });
-    e.preventDefault();
-    const searchData = this.state.searchData;
-    this.props.addData(searchData);
-    this.setState({searchData})
-    console.log(this.state)
   };
-
-  //   componentDidMount() {
-  //     axios.get('http://swapi.dev/api/people/1/')
-  //     .then(response => {
-  //       this.setState({ swapi: {
-  //         name: response.name,
-  //         dob: response.birth_year,
-  //         planet: response.homeworld
-  //       } });
-  //       console.log(response.data.name);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  //   }
 
   render() {
     return (

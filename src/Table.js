@@ -1,27 +1,29 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
+
 
 export default class Table extends React.Component {
   state = {
     myData: []
   }
 
-  // addData = data => {
-  //   this.setState({
-  //     myData: [...this.state.myData, data]
-  //   });
-  // };
+  addData = data => {
+    this.setState({
+      myData: [...this.state.myData, data]
+    });
+  };
 
   componentDidMount() {
     axios.get('https://swapi.dev/api/people')
     .then(response => {
       const myData = response.data.results;
       this.setState({ myData });
-      console.log(this.props)
+      // console.log(this.props)
     })
   }
 
   render() {
+    // console.log(this.props.addNewData.myData[1].results[0].name)
     const returnData = this.state.myData.map(returnItems => {
       let {name, birth_year, homeworld, height, mass, species} = returnItems;
       if(homeworld === "http://swapi.dev/api/planets/1/") {
@@ -65,5 +67,5 @@ return (
     </tbody>
   </table>
     );
-  }
+}
 }
