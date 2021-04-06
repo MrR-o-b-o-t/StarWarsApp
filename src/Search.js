@@ -28,6 +28,7 @@ export default class Search extends React.Component {
     axios.get("https://swapi.dev/api/people/?search=r2")
     .then((response) => {
       const searchData = response.data;
+      return searchData;
     });
   };
 
