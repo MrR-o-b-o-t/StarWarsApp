@@ -19,17 +19,16 @@ export default class Search extends React.Component {
     const target = e.target;
     const value = target.value;
     let api = `https://swapi.dev/api/people/?search=${value}`;
+    axios.get(api);
     this.setState({api})
-    console.log(this.state)
+    console.log(this.state.api)
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    axios.get("https://swapi.dev/api/people/?search=r2")
-    .then((response) => {
-      const searchData = response.data;
-      return searchData;
-    });
+    console.log(this.state)
+    this.props.addData(this.state)
+    console.log(this.props.appState)
   };
 
   render() {

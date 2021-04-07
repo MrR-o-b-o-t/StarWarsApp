@@ -12,7 +12,7 @@ export default class App extends Component {
 
   addData = moreData => {
     this.setState({
-      myData: [...this.state.myData, moreData]
+      myData: [moreData]
     })
   }
 
@@ -20,8 +20,8 @@ render() {
   return (
     <div>
       <Header />
-      <Table addNewData={this.state} />
-      <Search addData={this.addData} />
+      <Table addNewData={this.state} appState={this.state}/>
+      <Search addData={this.addData} appState={this.state} />
     </div>
   );
 }
