@@ -21,14 +21,11 @@ export default class Search extends React.Component {
     let api = `https://swapi.dev/api/people/?search=${value}`;
     axios.get(api);
     this.setState({api})
-    console.log(this.state.api)
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
     this.props.addData(this.state)
-    console.log(this.props.appState)
   };
 
   render() {
@@ -41,7 +38,7 @@ export default class Search extends React.Component {
               type="text"
               className="for-control ml-2"
               id="inlineFormInput"
-              placeholder="Luke Skywalker"
+              placeholder="Search"
               onChange={this.handleInput}
             ></input>
           </div>

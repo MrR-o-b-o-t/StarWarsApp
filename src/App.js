@@ -20,7 +20,7 @@ render() {
   return (
     <div>
       <Header />
-      <Table addNewData={this.state} appState={this.state}/>
+      <Table appState={this.state}/>
       <Search addData={this.addData} appState={this.state} />
     </div>
   );
