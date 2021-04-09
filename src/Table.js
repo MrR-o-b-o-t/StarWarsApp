@@ -56,7 +56,7 @@ export default class Table extends React.Component {
         this.setState({ myData });
         console.log(this.props.appState.myData[0].api)
       });
-      const userSearchData = this.state.myData.map((returnItems) => {
+      const userSearchData = this.state.myData.map((userReturnItems) => {
         let {
           name, 
           birth_year, 
@@ -64,7 +64,7 @@ export default class Table extends React.Component {
           height, 
           mass, 
           species} 
-        = returnItems;
+        = userReturnItems;
         return (
           <tr>
             <td>{name}</td>
