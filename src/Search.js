@@ -5,22 +5,23 @@ import axios from "axios";
 // Enter search params (handleInput())
 // use search params to set correct api get address to SWAPI
 // pass correct api address to handleSubmit()
-// use api address to get data related to search params
-// pass collected data to Table.js
-// set Table.js state to reflect collected data from Search.js
-// render table with new state in Table.js
+// pass api address to app.js state in handleSubmit()
+// in Table.js check app.js state to see if user input exists
+// if no - set Table.js state using default api request and render default results
+// if yes - set Table.js state using app.js state (user search api address) 
+// Render table using new Table.js state 
 
 export default class Search extends React.Component {
     state = {
-        searchData: []
+        
       }
 
   handleInput = (e) => {
     const target = e.target;
     const value = target.value;
     let api = `https://swapi.dev/api/people/?search=${value}`;
-    axios.get(api);
     this.setState({api})
+    console.log(this.state)
   };
 
   handleSubmit = (e) => {
