@@ -7,7 +7,8 @@ import "./App.css";
 
 export default class App extends Component {
   state = {
-    myData: []
+    myData: [],
+    isTrue: []
   }
 
   addData = moreData => {
@@ -16,12 +17,18 @@ export default class App extends Component {
     })
   }
 
+  isTrue = toggle => {
+    this.setState({
+      isTrue: [toggle]
+    })
+  }
+
 render() {
   return (
     <div>
       <Header />
-      <Table appState={this.state}/>
-      <Search addData={this.addData} appState={this.state} />
+      <Table addData={this.addData} appState={this.state} toggleData={this.isTrue}/>
+      <Search addData={this.addData} appState={this.state} toggleData={this.isTrue}/>
     </div>
   );
 }

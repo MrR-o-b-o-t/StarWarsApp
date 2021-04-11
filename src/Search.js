@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 //Psuedo
 // Enter search params (handleInput())
@@ -27,6 +26,9 @@ export default class Search extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addData(this.state)
+    this.props.toggleData(true)
+    console.log(this.props.appState)
+    console.log("Submit Button Pressed")
   };
 
   render() {
