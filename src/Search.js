@@ -1,15 +1,5 @@
 import React from "react";
 
-//Psuedo
-// Enter search params (handleInput())
-// use search params to set correct api get address to SWAPI
-// pass correct api address to handleSubmit()
-// pass api address to app.js state in handleSubmit()
-// in Table.js check app.js state to see if user input exists
-// if no - set Table.js state using default api request and render default results
-// if yes - set Table.js state using app.js state (user search api address) 
-// Render table using new Table.js state 
-
 export default class Search extends React.Component {
     state = {
         
