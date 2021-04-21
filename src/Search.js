@@ -10,15 +10,14 @@ export default class Search extends React.Component {
     const value = target.value;
     let api = `https://swapi.dev/api/people/?search=${value}`;
     this.setState({api})
-    console.log(this.state)
+    
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addData(this.state)
     this.props.toggleData(true)
-    console.log(this.props.appState)
-    console.log("Submit Button Pressed")
+    document.querySelector('.searchInput').reset()
   };
 
   render() {

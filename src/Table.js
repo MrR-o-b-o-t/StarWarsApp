@@ -21,7 +21,6 @@ export default class Table extends React.Component {
         const myData = response.data.results;
         this.setState({ myData });
         this.props.appState.isTrue = false;
-        console.log(this.props.appState);
       });
     }
   }
@@ -52,7 +51,15 @@ export default class Table extends React.Component {
             <th scope="col">Species</th>
           </tr>
         </thead>
-        <tbody>{returnData}</tbody>
+        <tbody>
+          {returnData.length > 0 ? (
+            returnData
+          ) : (
+            <tr>
+              <td>No results found</td>
+            </tr>
+          )}
+        </tbody>
       </table>
     );
   }
