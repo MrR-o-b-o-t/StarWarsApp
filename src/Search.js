@@ -20,6 +20,11 @@ export default class Search extends React.Component {
     document.querySelector('.searchInput').reset()
   };
 
+  handleReset = () => {
+    let reset = "https://swapi.dev/api/people/";
+    this.setState({reset})
+  };
+
   render() {
     return (
       <form className="searchInput">
@@ -41,6 +46,13 @@ export default class Search extends React.Component {
               className="btn btn-light btn-sm mb-1"
             >
               Submit
+            </button>
+            <button
+              onClick={this.handleReset}
+              type="submit"
+              className="btn btn-light btn-sm mb-1 ml-2"
+            >
+              Reset Data
             </button>
           </div>
         </div>
