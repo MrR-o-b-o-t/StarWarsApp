@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Header from "./Header";
 import Table from "./Table";
 import Search from "./Search";
@@ -11,9 +12,23 @@ export default class App extends Component {
     isTrue: [],
   };
 
+  componentDidMount() {
+    const getData = async () => {
+    await axios.get("https://swapi.dev/api/people/")
+    .then((response) => {
+      const myData = response.data.results;
+      this.setState({ myData });
+    });
+  }
+  getData()
+}
+
   addData = (moreData) => {
-    this.setState({
-      myData: [moreData],
+    axios.get(moreData.api).then((response) => {
+      const myData = response.data.results;
+      this.setState({
+        myData
+      });
     });
   };
 
@@ -24,6 +39,7 @@ export default class App extends Component {
   };
 
   render() {
+    const something = 1;
     return (
       <div>
         <Header />

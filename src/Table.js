@@ -2,17 +2,6 @@ import React from "react";
 import axios from "axios";
 
 export default class Table extends React.Component {
-  state = {
-    myData: [],
-    isTrue: [],
-  };
-
-  componentDidMount() {
-    axios.get("https://swapi.dev/api/people/").then((response) => {
-      const myData = response.data.results;
-      this.setState({ myData });
-    });
-  }
 
   componentDidUpdate() {
     if (this.props.appState.isTrue[0] === true) {
@@ -26,7 +15,7 @@ export default class Table extends React.Component {
   }
 
   render() {
-    const returnData = this.state.myData.map((returnItems) => {
+    const returnData = this.props.appState.myData.map((returnItems) => {
       let { name, birth_year, homeworld, height, mass, species } = returnItems;
       return (
         <tr>
