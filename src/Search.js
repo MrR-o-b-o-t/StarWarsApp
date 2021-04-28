@@ -13,6 +13,7 @@ export default class Search extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addData(this.state);
+    console.log(this.state)
     this.props.toggleData(true);
     document.querySelector(".searchInput").reset();
   };
