@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import axios from "axios";
-import Header from "./Header";
-import Search from "./Search";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import React, { Component } from "react"
+import axios from "axios"
+import Header from "./Header"
+import Search from "./Search"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 import paginationFactory from 'react-bootstrap-table2-paginator'
 import * as ReactBootStrap from "react-bootstrap"
-import BootstrapTable from "react-bootstrap-table-next";
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import BootstrapTable from "react-bootstrap-table-next"
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css'
 const columns = [
   {dataField: "name", text: "Name"},
   {dataField: "birth_year", text: "D.O.B"},
@@ -52,14 +52,14 @@ export default class App extends Component {
   componentDidMount() {
     const getData = async () => {
       try {
-        const data = await axios.get("https://swapi.dev/api/people/");
-        console.log(data.data.results);
-        const myData = data.data.results;
-        console.log(myData);
-        this.setState({ myData });
-        console.log(this.state);
+        const data = await axios.get("https://swapi.dev/api/people/")
+        console.log(data.data.results)
+        const myData = data.data.results
+        console.log(myData)
+        this.setState({ myData })
+        console.log(this.state)
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     };
     getData();
@@ -67,24 +67,28 @@ export default class App extends Component {
 
   componentDidUpdate() {
     if (this.state.isTrue[0] === true) {
+      try{
         const userSearch = this.state.myData[0].api;
         axios.get(userSearch).then((response) => {
-        const myData = response.data.results;
-        this.setState({ myData });
-        this.state.isTrue = false;
-      });
+        const myData = response.data.results
+        this.setState({ myData })
+        this.state.isTrue = false
+      })
+    } catch (err) {
+      console.log(err)
+    }
     }
   }
 
   addData = async (moreData) => {
     try {
-      const searchReturn = await axios.get(moreData.api);
-      const myData = searchReturn.data.results;
+      const searchReturn = await axios.get(moreData.api)
+      const myData = searchReturn.data.results
       this.setState({
         myData,
-      });
+      })
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   };
 
