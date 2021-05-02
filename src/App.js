@@ -102,11 +102,6 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        {/* <Table
-          addData={this.addData}
-          appState={this.state}
-          toggleData={this.isTrue}
-        /> */}
         <BootstrapTable
           keyField="name"
           data={this.state.myData}
