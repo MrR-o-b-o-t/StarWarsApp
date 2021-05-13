@@ -1,21 +1,21 @@
-import React from "react";
-import axios from "axios";
+import React from "react"
+import axios from "axios"
 
 export default class Table extends React.Component {
   componentDidUpdate() {
     if (this.props.appState.isTrue[0] === true) {
-        const userSearch = this.props.appState.myData[0].api;
-        axios.get(userSearch).then((response) => {
-        const myData = response.data.results;
-        this.setState({ myData });
-        this.props.appState.isTrue = false;
-      });
+      const userSearch = this.props.appState.myData[0].api
+      axios.get(userSearch).then((response) => {
+        const myData = response.data.results
+        this.setState({ myData })
+        this.props.appState.isTrue = false
+      })
     }
   }
 
   render() {
     const returnData = this.props.appState.myData.map((returnItems) => {
-      let { name, birth_year, homeworld, height, mass, species } = returnItems;
+      let { name, birth_year, homeworld, height, mass, species } = returnItems
       return (
         <tr>
           <td>{name}</td>
@@ -25,8 +25,8 @@ export default class Table extends React.Component {
           <td>{mass}</td>
           <td>{species}</td>
         </tr>
-      );
-    });
+      )
+    })
     return (
       <table className="table">
         <thead>
@@ -49,6 +49,6 @@ export default class Table extends React.Component {
           )}
         </tbody>
       </table>
-    );
+    )
   }
 }

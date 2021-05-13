@@ -1,27 +1,26 @@
-import React from "react";
+import React from "react"
 
 export default class Search extends React.Component {
-  state = {};
+  state = {}
 
   handleInput = (e) => {
-    const target = e.target;
-    const value = target.value;
-    let api = `https://swapi.dev/api/people/?search=${value}`;
-    this.setState({ api });
-  };
+    const target = e.target
+    const value = target.value
+    let api = `https://swapi.dev/api/people/?search=${value}`
+    this.setState({ api })
+  }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.addData(this.state);
-    console.log(this.state);
-    this.props.toggleData(true);
-    document.querySelector(".searchInput").reset();
-  };
+    e.preventDefault()
+    this.props.addData(this.state)
+    this.props.toggleData(true)
+    document.querySelector(".searchInput").reset()
+  }
 
   handleReset = () => {
-    let reset = "https://swapi.dev/api/people/";
-    this.setState({ reset });
-  };
+    let reset = "https://swapi.dev/api/people/"
+    this.setState({ reset })
+  }
 
   render() {
     return (
@@ -55,6 +54,6 @@ export default class Search extends React.Component {
           </div>
         </div>
       </form>
-    );
+    )
   }
 }
