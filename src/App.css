@@ -2,41 +2,67 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
-table th, tr{
-    color: white;
+table th,
+tr {
+  color: white;
 }
-body{
-    background-color: #363945;
-    font-family: Roboto;
-    color: #FFFAFA;
+body {
+  background-color: #363945;
+  font-family: Roboto;
+  color: #fffafa;
+}
+.searchContainer {
+  display: flex;
 }
 .table {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 15rem;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10rem;
 }
-.searchInput{
-    width: 30%;
-    margin: 0 auto;
-    margin-top: 15rem;
+.searchInput {
+  display: inline-block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
 }
-.btn{
-    font-family: Roboto;
-    font-weight: 500;
-    color: black;
-    border-style: none;
+.btn {
+  font-family: Roboto;
+  font-weight: 500;
+  color: black;
+  border-style: none;
 }
-.btn:hover{
-    background-color: #4cc9f0;
-    -webkit-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
-    -moz-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
-    box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
-    
+.btn:hover {
+  background-color: #4cc9f0;
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
+  box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
 }
-input{
+input {
+  text-align: center;
+  border-radius: 8px;
+  border-style: none;
+}
+.column {
+  margin-top: 2rem;
+}
+@media only screen and (max-width: 1353px) {
+  .searchContainer {
+    display: flex;
+  }
+  .searchInput {
+    width: 200px;
+    display: inline-block;
     text-align: center;
-    border-radius: 8px;
-    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+  }
+  #searchBtnDiv {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+  }
 }

@@ -1,13 +1,12 @@
 import React from "react"
-import axios from "axios"
-const prevBtn = document.getElementById("prevButton")
-const nextBtn = document.getElementById("nextButton")
+
 export default class Pagination extends React.Component {
   state = {
     isTrue: [],
     page: 1,
+    userSearch: this.props.appState.userSearch,
   }
-
+  // Increase page in state on Next button click
   nextPagination = (e) => {
     e.preventDefault()
     this.props.appState.paginate = true
@@ -15,7 +14,7 @@ export default class Pagination extends React.Component {
     this.state.page++
     this.props.paginate()
   }
-
+  // Decrease page in state on Prev button click
   prevPagination = (e) => {
     e.preventDefault()
     this.props.appState.paginate = true
@@ -29,7 +28,7 @@ export default class Pagination extends React.Component {
       <div className="column">
         <div className="d-flex justify-content-center">
           <div className="col-auto center">
-            {this.state.page > 1 ? (
+            {this.state.page > 1 ?? this.props.appState.userSearch === false ? (
               <button
                 id="prevButton"
                 onClick={this.prevPagination}
@@ -39,16 +38,11 @@ export default class Pagination extends React.Component {
                 Prev
               </button>
             ) : (
-              <button
-                id="prevButton"
-                onClick={this.pagination}
-                type="submit"
-                className="disabled"
-              >
+              <button id="prevButton" type="submit" className="disabled">
                 Prev
               </button>
             )}
-            {this.state.page < 9 ? (
+            {this.state.page < 9 && this.props.appState.userSearch === false ? (
               <button
                 id="nextButton"
                 onClick={this.nextPagination}
@@ -58,12 +52,7 @@ export default class Pagination extends React.Component {
                 Next
               </button>
             ) : (
-              <button
-                id="nextButton"
-                onClick={this.nextPagination}
-                type="submit"
-                className="disabled"
-              >
+              <button id="nextButton" type="submit" className="disabled">
                 Next
               </button>
             )}

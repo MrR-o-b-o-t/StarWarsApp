@@ -14,21 +14,20 @@ export default class App extends Component {
     page: 1,
     url: "https://swapi.dev/api/people/?page=",
     paginate: [],
+    userSearch: false,
   }
-
+  // Display initial api call data on mount
   componentDidMount() {
     const getData = async () => {
       await axios.get(this.state.url + this.state.page).then((response) => {
-        console.log(response.data)
         const myData = response.data.results
         this.setState({ myData })
       })
     }
     getData()
   }
-
+  // Display correct api call data if updated from Search.js, Pagination.js or Table.js
   componentDidUpdate() {
-    console.log("ran")
     if (this.state.isTrue[0] === true) {
       try {
         const userSearch = this.state.myData[0].api
@@ -41,11 +40,9 @@ export default class App extends Component {
         console.log(err)
       }
     } else if (this.state.paginate === true) {
-      console.log("ran")
       try {
         const paginate = this.state.url + this.state.page
         axios.get(paginate).then((response) => {
-          console.log(response)
           const myData = response.data.results
           this.setState({ myData })
           this.state.paginate = false
@@ -55,29 +52,30 @@ export default class App extends Component {
       }
     }
   }
-
+  // Update App.js state after user search submition
   addData = async (moreData) => {
     try {
       const searchReturn = await axios.get(moreData.api)
       const myData = searchReturn.data.results
       this.setState({
         myData,
+        userSearch: true,
       })
+      console.log(this.state)
     } catch (err) {
       console.log(err)
     }
   }
-
+  // Check if current data displayed in Table.js is user search data
   isTrue = (toggle) => {
     this.setState({
       isTrue: [toggle],
     })
   }
-
+  // Pagination functionality
   handlePagination = async () => {
     const getData = async () => {
       await axios.get(this.state.url + this.state.page).then((response) => {
-        console.log(response.data)
         const myData = response.data.results
         this.setState({ myData })
       })
