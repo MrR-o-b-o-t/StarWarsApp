@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios"
 
 export default class Table extends React.Component {
-  // Update render with correct api call data
+  // Update render with correct api call data after user search
   componentDidUpdate() {
     if (this.props.appState.isTrue[0] === true) {
       const userSearch = this.props.appState.myData.url
